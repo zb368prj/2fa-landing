@@ -1,6 +1,10 @@
-export const MONEY_SITE_URL = "https://zb368.biz/camp-fb1";
+export const MONEY_SITE_URL =
+  (import.meta.env.VITE_MONEY_SITE_URL as string | undefined) ?? "";
 
 export function moneySiteUrlWithIncomingQuery(): string {
+  if (!MONEY_SITE_URL) {
+    throw new Error("VITE_MONEY_SITE_URL is not set");
+  }
   const target = new URL(MONEY_SITE_URL);
   if (typeof window !== "undefined") {
     const incoming = new URLSearchParams(window.location.search);
@@ -11,7 +15,6 @@ export function moneySiteUrlWithIncomingQuery(): string {
   return target.toString();
 }
 
-/** Navigate via a real anchor so crawlers see rel="nofollow". */
 export function goToMoneySite() {
   const href = moneySiteUrlWithIncomingQuery();
   const link = document.createElement("a");

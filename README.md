@@ -1,22 +1,17 @@
-# 2fa-landing
+# landing
 
-Landing xác minh thành viên (Cloudflare Turnstile) cho `zb368news.com`.
+Verification landing (Cloudflare Turnstile).
 
-Pass captcha → chuyển `rel="nofollow"` sang money site `https://zb368.biz/camp-fb1`.
-
-## Chạy
+Config via environment variables only. Do not commit secrets, site keys, or destination URLs.
 
 ```bash
-# secret Turnstile — không commit
-export TURNSTILE_SECRET=...
-export VITE_TURNSTILE_SITE_KEY=0x4AAAAAAEW8EWFSECRqSUPK
+export TURNSTILE_SECRET=
+export VITE_TURNSTILE_SITE_KEY=
+export VITE_MONEY_SITE_URL=
 export NITRO_PRESET=node-server
 export VITE_STANDALONE=1
 export VITE_AUTH_ENABLED=false
 
 npm install
 npm run build
-docker compose up -d --build
 ```
-
-Trang: `noindex, nofollow`.
