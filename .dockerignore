@@ -1,0 +1,16 @@
+node_modules
+.vercel
+.tanstack
+.grok
+.git
+screenshots
+artifacts
+attachments
+.output
+dist
+*.log
+public/__grok
+AGENTS.md
+Dockerfile
+.dockerignore
+docker-compose.yml
